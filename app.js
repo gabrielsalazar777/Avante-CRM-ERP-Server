@@ -5,8 +5,9 @@ var logger = require("morgan");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+const usersRouter = require("./routes/users");
+const authRouter = require("./routes/auth");
+const projectRouter = require("./routes/projects");
 
 var app = express();
 
@@ -25,8 +26,9 @@ app.use(
   })
 );
 
-app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/auth", authRouter);
+app.use("/projects", projectRouter);
 
 mongoose
   .connect(process.env.MONGODB_URI)
