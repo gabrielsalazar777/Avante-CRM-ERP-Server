@@ -6,8 +6,14 @@ const clientSchema = new Schema(
       type: String,
       required: true,
     },
-    phone: String,
-    email: String,
+    phone: {
+      type: String,
+      default: "",
+    },
+    email: {
+      type: String,
+      default: "",
+    },
   },
   {
     timestamps: true,
