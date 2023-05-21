@@ -8,8 +8,8 @@ const projectSchema = new Schema(
     },
     status: {
       type: Boolean,
-      required: true,
-      default: true,
+    //   required: true,
+      default: false,
     },
     projectType: {
       type: [String],
