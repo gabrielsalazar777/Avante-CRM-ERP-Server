@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const Client = require("../models/Client");
+const Project = require("../models/Project");
 
 const isAuthenticated = require("../middleware/isAuthenticated");
 
@@ -30,11 +31,25 @@ router.get("/display", isAuthenticated, (req, res) => {
 });
 
 //READ ONE
+// router.get("/display/:clientId", isAuthenticated, (req, res) => {
+//   Client.findById(req.params.clientId)
+//     .then((foundClient) => {
+//       console.log("FOUND ONE Client: ", foundClient);
+//       res.json(foundClient);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// });
+
+//READ ONE'S PROJECTS
 router.get("/display/:clientId", isAuthenticated, (req, res) => {
   Client.findById(req.params.clientId)
     .then((foundClient) => {
-      console.log("FOUND ONE Client: ", foundClient);
-      res.json(foundClient);
+      Project.find({ client: foundClient._id }).then((foundProjects) => {
+        console.log("FOUND ONE CLIENT'S PROJECTS: ", foundClient);
+        res.json(foundProjects);
+      });
     })
     .catch((err) => {
       console.log(err);

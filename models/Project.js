@@ -8,7 +8,7 @@ const projectSchema = new Schema(
     },
     status: {
       type: Boolean,
-    //   required: true,
+      //   required: true,
       default: false,
     },
     projectType: {
@@ -19,6 +19,7 @@ const projectSchema = new Schema(
       type: String,
       default: "",
     },
+    client: { type: Schema.Types.ObjectId, ref: "Client" },
   },
   {
     timestamps: true,

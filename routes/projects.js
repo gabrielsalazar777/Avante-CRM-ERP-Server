@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const Project = require("../models/Project");
+const Client = require("../models/Client");
 
 const isAuthenticated = require("../middleware/isAuthenticated");
 
@@ -9,8 +10,12 @@ const isAuthenticated = require("../middleware/isAuthenticated");
 router.post("/create", isAuthenticated, (req, res) => {
   Project.create(req.body)
     .then((createdProject) => {
-      console.log("PROJECT CREATED: ", createdProject);
-      res.json(createdProject);
+      Project.findById(createdProject._id)
+        .populate("client")
+        .then((foundProject) => {
+          console.log("PROJECT CREATED: ", foundProject);
+          res.json(foundProject);
+        });
     })
     .catch((err) => {
       console.log(err);
@@ -20,6 +25,7 @@ router.post("/create", isAuthenticated, (req, res) => {
 //READ ALL
 router.get("/display", isAuthenticated, (req, res) => {
   Project.find()
+    .populate("client")
     .then((foundProjects) => {
       console.log("FOUND ALL PROJECTS: ", foundProjects);
       res.json(foundProjects);
@@ -32,6 +38,7 @@ router.get("/display", isAuthenticated, (req, res) => {
 //READ ONE
 router.get("/display/:projectId", isAuthenticated, (req, res) => {
   Project.findById(req.params.projectId)
+    .populate("client")
     .then((foundProject) => {
       console.log("FOUND ONE PROJECTS: ", foundProject);
       res.json(foundProject);
