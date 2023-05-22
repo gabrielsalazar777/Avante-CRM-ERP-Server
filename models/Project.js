@@ -19,7 +19,19 @@ const projectSchema = new Schema(
       type: String,
       default: "",
     },
-    client: { type: Schema.Types.ObjectId, ref: "Client" },
+    client: {
+      type: Schema.Types.ObjectId,
+      ref: "Client",
+      required: true,
+    },
+    materials: [
+      {
+        name: { type: String, required: true, default: "" },
+        squareFeet: { type: Number, required: true, default: 0 },
+        coverage: { type: Number, required: true, default: 0 },
+        units: { type: Number, required: true, default: 0 },
+      },
+    ],
   },
   {
     timestamps: true,
