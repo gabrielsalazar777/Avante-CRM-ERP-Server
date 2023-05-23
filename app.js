@@ -9,6 +9,7 @@ const usersRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
 const projectRouter = require("./routes/projects");
 const clientRouter = require("./routes/clients");
+const photoRouter = require("./routes/photo");
 
 var app = express();
 
@@ -31,6 +32,7 @@ app.use("/users", usersRouter);
 app.use("/auth", authRouter);
 app.use("/projects", projectRouter);
 app.use("/clients", clientRouter);
+app.use("/photo", photoRouter);
 
 mongoose
   .connect(process.env.MONGODB_URI)

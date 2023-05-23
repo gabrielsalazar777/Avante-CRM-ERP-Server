@@ -51,6 +51,7 @@ router.get("/display/:projectId", isAuthenticated, (req, res) => {
 //UPDATE ONE
 router.post("/edit/:projectId", isAuthenticated, (req, res) => {
   Project.findByIdAndUpdate(req.params.projectId, req.body, { new: true })
+    .populate("client")
     .then((updatedProject) => {
       res.json(updatedProject);
       console.log("EDIT: ", updatedProject);
