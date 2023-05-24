@@ -70,9 +70,11 @@ router.post("/edit/:clientId", isAuthenticated, (req, res) => {
 
 //DELETE ONE
 router.get("/delete/:clientId", isAuthenticated, (req, res) => {
-  Client.findByIdAndDelete(req.params.clientId)
-    .then((deletedResult) => {
-      res.json(deletedResult);
+  Project.deleteMany({ client: req.params.clientId })
+    .then(() => {
+      Client.findByIdAndDelete(req.params.clientId).then((deletedResult) => {
+        res.json(deletedResult);
+      });
     })
     .catch((err) => {
       console.log(err);
