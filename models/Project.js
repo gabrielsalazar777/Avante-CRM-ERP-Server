@@ -32,6 +32,8 @@ const projectSchema = new Schema(
         units: { type: Number, required: true, default: 0 },
       },
     ],
+    startDate: Date,
+    endDate: Date,
   },
   {
     timestamps: true,

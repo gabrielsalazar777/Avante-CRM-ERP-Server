@@ -11,13 +11,13 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    fullName: {                         
+    fullName: {
       type: String,
       required: true,
     },
     role: {
       type: String,
-      default: "Employee",
+    //   default: "Employee",
     },
   },
   {

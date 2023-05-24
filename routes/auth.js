@@ -29,9 +29,9 @@ router.post("/signup", (req, res, next) => {
       const salt = bcrypt.genSaltSync(saltRounds);
       const hashedPassword = bcrypt.hashSync(password, salt);
 
-      let role = 'Employee'
+    //   let role = 'Employee'
 
-      if (adminKey === "adminkey") {
+      if (adminKey === process.env.ADMIN_KEY) {
          role = "Admin";
       }
 
