@@ -23,17 +23,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('trust proxy', 1);
 app.enable('trust proxy');
 
-// app.use(
-//    cors({
-//       origin: ['https://master--serene-crepe-89fbdf.netlify.app'],
-//    })
-// );
-
 app.use(
-  cors({
-    origin: ["http://localhost:3000"], // <== URL of our future React app
-  })
+   cors({
+      origin: ['https://master--serene-crepe-89fbdf.netlify.app'],
+   })
 );
+
+// app.use(
+//   cors({
+//     origin: ["http://localhost:3000"], // <== URL of our future React app
+//   })
+// );
 
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
