@@ -30,9 +30,9 @@ app.use(
 );
 
 // app.use(
-//   cors({
-//     origin: ["http://localhost:3000"], // <== URL of our future React app
-//   })
+//    cors({
+//       origin: ['http://localhost:3000'], // <== URL of our future React app
+//    })
 // );
 
 app.use('/users', usersRouter);
