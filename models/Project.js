@@ -32,6 +32,10 @@ const projectSchema = new Schema(
             units: { type: Number, required: true, default: 0 },
          },
       ],
+      address: {
+         type: String,
+         default: '',
+      },
       startDate: Date,
       endDate: Date,
       color: {
